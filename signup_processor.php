@@ -1,10 +1,9 @@
 <?php
 // Database configuration
 $host = 'localhost'; // or your database host
-$username = 'admin'; // your database username
-$password = 'admin'; // your database password
+$username = 'root'; // your database username
+$password = ''; // your database password
 $database = 'pham'; // your database name
-
 // Connect to the database
 $conn = new mysqli($host, $username, $password, $database);
 
@@ -25,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert the user into the database
-    $sql = "INSERT INTO user (email, password,name) VALUES ('$email', '$hashed_password','name')";
+    $sql = "INSERT INTO users (email, password,name) VALUES ('$email', '$hashed_password','name')";
 
     if ($conn->query($sql) === TRUE) {
         header('Location: login.php');

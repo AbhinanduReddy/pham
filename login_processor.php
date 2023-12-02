@@ -3,8 +3,8 @@ session_start(); // Start a new session or resume the existing one
 
 // Database configuration
 $host = 'localhost'; // or your database host
-$username = 'admin'; // your database username
-$password = 'admin'; // your database password
+$username = 'root'; // your database username
+$password = ''; // your database password
 $database = 'pham'; // your database name
 
 
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $conn->real_escape_string(trim($_POST['password']));
 
     // SQL query to check the user
-    $sql = "SELECT name, password FROM user WHERE email = '$email'";
+    $sql = "SELECT name, password FROM users WHERE email = '$email'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {

@@ -1,13 +1,15 @@
 <?php
 session_start();
 
-// Check if$_SESSION["username"] the user is logged in (you can modify this logic based on your authentication system)
-if (isset($_SESSION['username'])) {
-    // User is logged in
+// Check if the user is logged in via Facebook
+if (isset($_SESSION['fb_user_name'])) {
+    $welcomeMessage = "Welcome, " . $_SESSION['fb_user_name'] . "!";
+    $loginButton = '<a href="logout.php">Logout</a>';
+} elseif (isset($_SESSION['username'])) {
+    // Check if the user is logged in with your regular authentication system
     $welcomeMessage = "Welcome, " . $_SESSION['username'] . "!";
     $loginButton = '<a href="logout.php">Logout</a>';
 } else {
-    // User is not logged in
     $welcomeMessage = "";
     $loginButton = '<a href="login.php">Login</a>';
 }
@@ -40,7 +42,7 @@ if (isset($_SESSION['username'])) {
     ?>
 
                 <li id="login-button">
-         <?php echo $welcomeMessage, $loginButton; ?>
+                <?php echo $welcomeMessage, $loginButton; ?>
     </li>
             </ul>
         </nav>
