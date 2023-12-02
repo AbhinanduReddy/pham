@@ -21,7 +21,18 @@ if (isset($_SESSION['fb_user_name'])) {
 
     <title>School Supplies</title>
     <style>
-        
+        .tile {
+            display: inline-block;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+        }
+        img {
+            max-width: 100px;
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -51,20 +62,39 @@ if (isset($_SESSION['fb_user_name'])) {
  
     <div class="container">
        
-            <a href="https://abhinandu.000webhostapp.com/schoolsupplies" class="tile-link">
-                
-                <div class="tile"><img class="tile-icon" src="icon.png"><div>School Supplies</div></div>
-            </a>
-            <a href="https://abhinandu.000webhostapp.com/schoolsupplies" class="tile-link">
-            <div class="tile"><img class="tile-icon" src="icon.png"><div>Photo Palace</div></div>
-            </a>
-            <a href="https://abhinandu.000webhostapp.com/schoolsupplies" class="tile-link">
-            <div class="tile"><img class="tile-icon" src="icon.png"><div>Movies</div></div>
-            </a>
-            <a href="https://abhinandu.000webhostapp.com/schoolsupplies" class="tile-link">
-            <div class="tile"><img class="tile-icon" src="icon.png"><div>StyleIt</div></div>
-            </a>
-            
+    <?php
+    // URL to fetch top five reviews
+    $url = 'https://pham-market-place.000webhostapp.com/pham/topFiveReviews.php';
+
+    // Initialize cURL session
+    $ch = curl_init();
+
+    // Set cURL options
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    // Execute cURL session
+    $response = curl_exec($ch);
+
+    // Check for errors and process the response
+    if ($response === false) {
+        echo "Error occurred: " . curl_error($ch);
+    } else {
+        // Decode the JSON response
+        $reviews = json_decode($response, true);
+        // Display reviews in tiles
+        foreach ($reviews as $review) {
+            echo "<div class='tile'>";
+            echo "<img src='" . urldecode($review['img_url']) . "' alt='Product Image'>";
+            echo "<h3>" . $review['product_name'] . "</h3>";
+            echo "<p>Rating: " . $review['average_rating'] . "</p>";
+            echo "</div>";
+        }
+    }
+
+    // Close cURL session
+    curl_close($ch);
+    ?>
            
     </div>
 
