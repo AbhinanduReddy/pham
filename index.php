@@ -18,7 +18,7 @@ if (isset($_SESSION['fb_user_name'])) {
 <html>
 <head>
 <link rel="stylesheet" href="style.css">
-
+<script src="tracking.js"></script>
     <title>School Supplies</title>
     <style>
         
@@ -31,7 +31,7 @@ if (isset($_SESSION['fb_user_name'])) {
             <ul>
                  <li  id="login-button"><a href="index.php">Most Visited Products in Companies</a></li>
                 <li  id="login-button"><a href="about.php">Most Visited Products in PHAM</a></li>
-                <li  id="login-button"><a href="products.php">Page Tracking</a></li>
+                <li  id="login-button"><a href="tracking_page.html">Page Tracking</a></li>
 
     <?php
     if (isset($_SESSION['username']) && $_SESSION['username'] === 'admin') {
