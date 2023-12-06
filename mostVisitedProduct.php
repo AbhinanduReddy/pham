@@ -18,7 +18,7 @@ if (isset($_SESSION['fb_user_name'])) {
 <html>
 <head>
 <link rel="stylesheet" href="style.css">
-
+<script src="tracking.js"></script>
     <title>School Supplies</title>
     <style>
         .tile {

@@ -32,6 +32,8 @@ if (isset($_SESSION['fb_user_name'])) {
             <li  id="login-button"><a href="mostVisitedCompanies.php">Most Visited Products in Companies</a></li>
             <li  id="login-button"><a href="mostVisitedProduct.php">Most Visited Products in PHAM</a></li>
             <li  id="login-button"><a href="tracking_page.html">Page Tracking</a></li>
+            <li id="login-button"><a href="feedback_form.html">Give Feedback</a>
+            <li id="login-button"><a href="display_feedback.php">Reviews</a>
 
 
     <?php
